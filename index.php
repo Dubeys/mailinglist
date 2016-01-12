@@ -1,5 +1,6 @@
 <?php
 include_once('include/init.php');
+require_once('include/phpmailer/PHPMailerAutoload.php');
 
 $errors = [];
 
@@ -29,15 +30,47 @@ if(!empty($_POST)){
 
     if(count($errors) == 0){
 
-      $sql = 'INSERT INTO users(email, secret) VALUES(:email, :secret)';
+      $sql = 'INSERT INTO users(email, secret,valid) VALUES(:email, :secret,:valid)';
 
       $secret = uniqid();
       $preparedStatement = $pdo->prepare($sql);
       $preparedStatement->bindValue('email', $email);
       $preparedStatement->bindValue('secret', $secret);
+      $preparedStatement->bindValue('valid', false);
+
+
 
       if($preparedStatement->execute()){
-        $_SESSION['email'] = $email;
+
+        //-------------------------------------------------------------------@@@
+
+      $mail = new PHPMailer;
+
+      //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+      $mail->isSMTP();                                      // Set mailer to use SMTP
+      $mail->Host = 'smtp.mandrillapp.com';  // Specify main and backup SMTP servers
+      $mail->SMTPAuth = true;                               // Enable SMTP authentication
+      $mail->Username = 'alexandre@pixeline.be';                 // SMTP username
+      $mail->Password = 'bDMUEuWn1H4r3FCGQjyO-g';                           // SMTP password
+      $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+      $mail->Port = 587;                                    // TCP port to connect to
+
+      $mail->setFrom('derval.igor@gmail.com','Your Lord');
+      $mail->addAddress($email);                            // Add a recipient
+
+      $mail->isHTML(true);                                  // Set email format to HTML
+
+      $mail->Subject = 'Such invention';
+      $mail->Body    = '<a href="http://localhost:8888/mailinglist/validation.php?id='.$secret.'">Validate email</a>';
+
+      if(!$mail->send()) {
+          // echo 'Message could not be sent.';
+          // echo 'Mailer Error: ' . $mail->ErrorInfo;
+      } else {
+          // echo 'Message has been sent';
+      }
+
         redirectTo('check.php?email='.$email);
       }
     }
@@ -54,10 +87,9 @@ if(!empty($_POST)){
     <title>Such invention</title>
   </head>
 <body>
-  <form class="row" action="index.php" method="post">
-    <div class="column small-12 large-7 small-centered">
+  <form class="row collapse" action="index.php" method="post">
 
-      <?php if(!empty($errors['email'])){echo $errors['email'];} ?>
+    <div class="column small-12 medium-7 large-9 ">
 
       <label>
         <input type="email" name="email" value="" placeholder="email...">
@@ -67,8 +99,13 @@ if(!empty($_POST)){
         <input type="name" name="login" value="">
       </label>
 
-      <input type="submit" name="" class="button" value="">
     </div>
+
+    <div class="column small-12 medium-5 large-3 ">
+      <input type="submit" name="" class="button expanded" value="SUBSCRIBE">
+    </div>
+
+    <?php if(!empty($errors['email'])){echo '<p style="">'.$errors['email'].'</p>';} ?>
   </form>
 
 </body>
