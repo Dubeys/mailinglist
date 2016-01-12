@@ -1,0 +1,52 @@
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: .05em;
+  color: #333333;
+  margin: 30px 0 30px 0;
+}
+
+.alert-error {
+  color: red;
+  font-style: italic;
+  font-size: 12px;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+.button {
+  height: 100px;
+}
+
+.name {
+  float: left;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+.name, .date {
+  width: 50%;
+  display: block;
+  opacity: .2;
+  margin-bottom: 0;
+  margin-top: 15px;
+}
+
+.date {
+  float: right;
+  text-align: right;
+  font-size: 14px;
+}
+
+.clear {
+  clear: both;
+}
+
+.no_overflow {
+  height: 500px;
+  overflow: auto;
+}
