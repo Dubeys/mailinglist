@@ -40,3 +40,19 @@ li {
   line-height: 100px;
 
 }
+
+.button:hover {
+  background: #c48d53;
+}
+
+.far {
+  margin-top: 30px;
+}
+
+.yellow {
+  color: #fcfb92;
+}
+
+.red {
+  color: #fe8080;
+}

@@ -66,18 +66,20 @@ $fetch = $preparedStatement->fetchAll();
         echo '<li>';
         echo " ".$row['email']." ";
         echo'</li>';
-        echo '<a href="admin.php?id='.$row['id']. '&action=modify">edit</a>';
-        echo ' <a href="admin.php?id='.$row['id']. '&action=delete">delete</a>';
+        echo '<a class="yellow" href="admin.php?id='.$row['id']. '&action=modify">edit |</a>';
+        echo ' <a class="red" href="admin.php?id='.$row['id']. '&action=delete">delete</a>';
 
         if($user_action === 'modify' && $row['id'] === $user_id && empty($_POST)){
       ?>
 
-        <form class="row" action="admin.php?id=<?php echo $user_id; ?>&action=modify" method="post">
+        <form class="input-group far" action="admin.php?id=<?php echo $user_id; ?>&action=modify" method="post">
         <label>
-          <input type="email" name="email" placeholder="new email..."></input>
+          <input class="input-group-field" type="email" name="email" placeholder="new email..."></input>
         </label>
 
-        <input type="submit" class="button expanded" value="EDIT">
+        <label class="input-group-button">
+        <input type="submit" class="button" value="EDIT">
+        </label>
 
       <?php
         }
