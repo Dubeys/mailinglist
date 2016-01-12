@@ -1,3 +1,10 @@
+<?php
+include_once 'include/init.php';
+
+$email = $_GET['email'];
+
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -12,7 +19,7 @@
 
     <div class="column small-12 medium-7 large-9 small-centered">
       <h1>congrats</h1>
-      <h2>You will be one of the first too discover the "such invention"</h2>
+      <h2>You will be one of the first to discover the "such invention"</h2>
     </div>
   </form>
 

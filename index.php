@@ -87,9 +87,19 @@ if(!empty($_POST)){
     <title>Such invention</title>
   </head>
 <body>
-  <form class="row collapse" action="index.php" method="post">
+  <div class="absolute ">
+    <h1>Such Invention</h1>
+  </div>
 
-    <div class="column small-12 medium-7 large-9 ">
+  <div class="down">
+    <div>
+      <img src="assets/doge.png">
+    </div>
+  </div>
+
+  <form class="row" action="index.php" method="post">
+
+    <div class="column medium-4 medium-centered ">
 
       <label>
         <input type="email" name="email" value="" placeholder="email...">
@@ -99,9 +109,6 @@ if(!empty($_POST)){
         <input type="name" name="login" value="">
       </label>
 
-    </div>
-
-    <div class="column small-12 medium-5 large-3 ">
       <input type="submit" name="" class="button expanded" value="SUBSCRIBE">
     </div>
 

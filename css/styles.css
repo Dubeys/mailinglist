@@ -2,5 +2,41 @@ h1, h2, h3 {
   text-align: center;
   text-transform: uppercase;
   font-weight: 600;
-  color: #333333;
+  color: white;
+}
+
+h2 {
+  opacity: .5;
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.absolute {
+  padding-top: 100px;
+}
+
+.button {
+  background: #c49753;
+}
+
+body {
+  background: #443321;
+}
+
+.down {
+  margin-bottom: -8px;
+  margin-top: 40px;
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+li {
+  color: white;
+  list-style: none;
+  padding: none;
+  display: block;
+  height: 70px;
+  line-height: 100px;
+
 }
